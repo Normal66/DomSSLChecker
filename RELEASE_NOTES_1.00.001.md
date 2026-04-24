@@ -18,7 +18,7 @@
 First public release.
 
 **Included**
-- domain expiration check (WHOIS via `whois.ru`)
+- domain expiration check
 - SSL/TLS check (443, SNI=domain)
 - background checks and notifications (WorkManager)
 
