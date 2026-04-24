@@ -1,44 +1,77 @@
 # DomSSLChecker
 
+**Android‑приложение для контроля сроков доменов и SSL‑сертификатов.**  
+**Android app to track domain and SSL certificate expiry dates.**
+
+- **WHOIS**: срок окончания домена (через `whois.ru`)
+- **SSL/TLS**: срок окончания leaf‑сертификата (порт 443, SNI=домен)
+- **Фоновые проверки**: по расписанию через WorkManager + уведомления
+
+---
+
 ## Русский
 
-**DomSSLChecker** — Android‑приложение для проверки сроков:
-- **доменов** (WHOIS)
-- **SSL/TLS сертификатов** (443, SNI=домен)
+### Зачем
+Чтобы не пропускать:
+- окончание регистрации домена
+- окончание SSL‑сертификата сайта
 
 ### Возможности
-- список доменов с отображением:
-  - срок домена
-  - срок SSL (листовой сертификат) или «отсутствует сайт»
-- ручное обновление WHOIS и SSL по домену
-- фоновые проверки по расписанию (WorkManager) и уведомления
-- сортировка списка доменов: по имени / по сроку домена
+- **Список доменов**:
+  - `имя_домена`
+  - `Срок домена: ...`
+  - `Срок SSL: ...` или `Срок SSL: отсутствует сайт`
+- **Проверка по кнопке**: WHOIS и SSL для выбранного домена
+- **Автопроверка**: по расписанию (выключено/день/неделя) + уведомления
+- **Сортировка**: по имени / по сроку домена
 
 ### Установка
-Скачайте APK из **Releases** и установите вручную.
+1. Откройте **Releases**
+2. Скачайте `DomSSLChecker-*.apk`
+3. Установите (Android может попросить разрешение “из неизвестных источников”)
 
-> Примечание: Android требует, чтобы APK был **подписан**. В релизах публикуется подписанный APK.
+### Конфиденциальность
+- Приложение хранит список доменов **локально** на устройстве (Room DB).
+- Для проверок выполняются сетевые запросы к WHOIS/SSL endpoint’ам.
+
+### Поддержка
+Если что-то не работает — создайте Issue в этом репозитории и приложите:
+- домен
+- что нажимали
+- текст ошибки (если есть)
 
 ---
 
 ## English
 
-**DomSSLChecker** is an Android app that checks expiration dates for:
-- **domain names** (WHOIS)
-- **SSL/TLS certificates** (port 443, SNI=domain)
+### Why
+To avoid missing:
+- domain registration expiration
+- website SSL certificate expiration
 
 ### Features
-- domain list shows:
-  - domain expiration date
-  - SSL leaf certificate expiration date or “site unavailable”
-- manual WHOIS and SSL refresh per domain
-- background scheduled checks (WorkManager) + notifications
-- domain list sorting: by name / by domain expiry
+- **Domain list**:
+  - `domain_name`
+  - `Domain expiry: ...`
+  - `SSL expiry: ...` or `SSL expiry: site unavailable`
+- **Manual refresh** per domain (WHOIS + SSL)
+- **Scheduled background checks** (WorkManager) + notifications
+- **Sorting**: by name / by domain expiry
 
 ### Install
-Download the APK from **Releases** and install it manually.
+1. Open **Releases**
+2. Download `DomSSLChecker-*.apk`
+3. Install (Android may ask to allow “unknown sources”)
 
-> Note: Android requires APKs to be **signed**. Releases contain a signed APK.
+### Privacy
+- The domain list is stored **locally** on the device (Room DB).
+- Network requests are performed to fetch WHOIS/SSL data.
+
+---
+
+## License / Лицензия
+This repository does **not** publish source code. Releases contain compiled APKs.  
+See [`LICENSE.md`](./LICENSE.md).
 
 ---
 
