@@ -3,7 +3,7 @@
 **Android‑приложение для контроля сроков доменов и SSL‑сертификатов.**  
 **Android app to track domain and SSL certificate expiry dates.**
 
-- **WHOIS**: срок окончания домена (через `whois.ru`)
+- **WHOIS**: срок окончания домена
 - **SSL/TLS**: срок окончания leaf‑сертификата (порт 443, SNI=домен)
 - **Фоновые проверки**: по расписанию через WorkManager + уведомления
 
