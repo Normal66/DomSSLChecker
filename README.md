@@ -3,9 +3,12 @@
 **Android‑приложение для контроля сроков доменов и SSL‑сертификатов.**  
 **Android app to track domain and SSL certificate expiry dates.**
 
-- **WHOIS**: срок окончания домена
+- **Current release / Текущий релиз**: **1.01**
+
+- **WHOIS**: срок окончания домена (через `whois.ru`)
 - **SSL/TLS**: срок окончания leaf‑сертификата (порт 443, SNI=домен)
 - **Фоновые проверки**: по расписанию через WorkManager + уведомления
+- **Хостер/провайдер**: определяется по NS и/или по A/ASN (часто CDN)
 
 ---
 
@@ -29,6 +32,9 @@
 1. Откройте **Releases**
 2. Скачайте `DomSSLChecker-*.apk`
 3. Установите (Android может попросить разрешение “из неизвестных источников”)
+
+Рекомендуемый файл для текущей версии:
+- `DomSSLChecker-1.01.apk`
 
 ### Конфиденциальность
 - Приложение хранит список доменов **локально** на устройстве (Room DB).
@@ -62,6 +68,9 @@ To avoid missing:
 1. Open **Releases**
 2. Download `DomSSLChecker-*.apk`
 3. Install (Android may ask to allow “unknown sources”)
+
+Recommended file for current version:
+- `DomSSLChecker-1.01.apk`
 
 ### Privacy
 - The domain list is stored **locally** on the device (Room DB).
