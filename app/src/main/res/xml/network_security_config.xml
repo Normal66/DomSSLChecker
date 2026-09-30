@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Классический WHOIS — TCP:43, без TLS; без этого Android 9+ часто рвёт соединения. -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">whois.tcinet.ru</domain>
+        <domain includeSubdomains="true">whois.nic.ru</domain>
+        <domain includeSubdomains="true">whois.iana.org</domain>
+        <domain includeSubdomains="true">whois.internic.net</domain>
+    </domain-config>
+</network-security-config>

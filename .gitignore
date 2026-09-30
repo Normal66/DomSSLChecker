@@ -1,0 +1,20 @@
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.apk.idsig
+/tools/gradle-8.7/
+*.ap_
+*.dex
+*.class
+
+# Release signing (local only)
+PUBLISH/domsslchecker-release.jks
+PUBLISH/release-signing-credentials.txt

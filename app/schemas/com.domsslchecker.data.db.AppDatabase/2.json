@@ -1,0 +1,315 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "4e4dbea7c0ff24a438095989fd3a7362",
+    "entities": [
+      {
+        "tableName": "domain_records",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `domain` TEXT NOT NULL, `created_at_utc` INTEGER NOT NULL, `updated_at_utc` INTEGER NOT NULL, `domain_expiry_utc_auto` INTEGER, `domain_expiry_utc_manual` INTEGER, `domain_expiry_source` TEXT NOT NULL, `domain_update_status` TEXT NOT NULL, `domain_update_last_run_utc` INTEGER, `domain_update_last_error` TEXT, `ssl_last_checked_utc` INTEGER, `ssl_status` TEXT NOT NULL, `ssl_last_error` TEXT, `thresholds_override_days_csv` TEXT, `label` TEXT, `notes` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domain",
+            "columnName": "domain",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "createdAtUtc",
+            "columnName": "created_at_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updatedAtUtc",
+            "columnName": "updated_at_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domainExpiryUtcAuto",
+            "columnName": "domain_expiry_utc_auto",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "domainExpiryUtcManual",
+            "columnName": "domain_expiry_utc_manual",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "domainExpirySource",
+            "columnName": "domain_expiry_source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domainUpdateStatus",
+            "columnName": "domain_update_status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domainUpdateLastRunUtc",
+            "columnName": "domain_update_last_run_utc",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "domainUpdateLastError",
+            "columnName": "domain_update_last_error",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sslLastCheckedUtc",
+            "columnName": "ssl_last_checked_utc",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sslStatus",
+            "columnName": "ssl_status",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sslLastError",
+            "columnName": "ssl_last_error",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "thresholdsOverrideDaysCsv",
+            "columnName": "thresholds_override_days_csv",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_domain_records_domain",
+            "unique": true,
+            "columnNames": [
+              "domain"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_domain_records_domain` ON `${TABLE_NAME}` (`domain`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "ssl_cert_entries",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `domain_id` INTEGER NOT NULL, `position` INTEGER NOT NULL, `subject` TEXT NOT NULL, `issuer` TEXT NOT NULL, `not_before_utc` INTEGER NOT NULL, `not_after_utc` INTEGER NOT NULL, `serial_number` TEXT NOT NULL, `sha256_fingerprint` TEXT NOT NULL, FOREIGN KEY(`domain_id`) REFERENCES `domain_records`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domainId",
+            "columnName": "domain_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "position",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subject",
+            "columnName": "subject",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "issuer",
+            "columnName": "issuer",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notBeforeUtc",
+            "columnName": "not_before_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notAfterUtc",
+            "columnName": "not_after_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serialNumber",
+            "columnName": "serial_number",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sha256Fingerprint",
+            "columnName": "sha256_fingerprint",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ssl_cert_entries_domain_id",
+            "unique": false,
+            "columnNames": [
+              "domain_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ssl_cert_entries_domain_id` ON `${TABLE_NAME}` (`domain_id`)"
+          },
+          {
+            "name": "index_ssl_cert_entries_domain_id_position",
+            "unique": true,
+            "columnNames": [
+              "domain_id",
+              "position"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_ssl_cert_entries_domain_id_position` ON `${TABLE_NAME}` (`domain_id`, `position`)"
+          },
+          {
+            "name": "index_ssl_cert_entries_sha256_fingerprint",
+            "unique": false,
+            "columnNames": [
+              "sha256_fingerprint"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ssl_cert_entries_sha256_fingerprint` ON `${TABLE_NAME}` (`sha256_fingerprint`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "domain_records",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "domain_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "domain_expiry_candidates",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `domain_id` INTEGER NOT NULL, `source` TEXT NOT NULL, `server_host` TEXT NOT NULL, `candidate_expiry_utc` INTEGER NOT NULL, `line` TEXT NOT NULL, FOREIGN KEY(`domain_id`) REFERENCES `domain_records`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "domainId",
+            "columnName": "domain_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "serverHost",
+            "columnName": "server_host",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "candidateExpiryUtc",
+            "columnName": "candidate_expiry_utc",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "line",
+            "columnName": "line",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_domain_expiry_candidates_domain_id",
+            "unique": false,
+            "columnNames": [
+              "domain_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_domain_expiry_candidates_domain_id` ON `${TABLE_NAME}` (`domain_id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "domain_records",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "domain_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4e4dbea7c0ff24a438095989fd3a7362')"
+    ]
+  }
+}
