@@ -14,7 +14,7 @@
 *.ap_
 *.dex
 *.class
-
+/doc/
 # Local documentation (never publish)
 /doc/
 
