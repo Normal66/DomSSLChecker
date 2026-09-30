@@ -58,7 +58,7 @@ To avoid missing:
 ### Features
 - **Domain list**:
   - `domain_name`
-  - `Domain expiry: ...`
+  - `Domain pay-by: ...`
   - `SSL expiry: ...` or `SSL expiry: site unavailable`
 - **Manual refresh** per domain (WHOIS + SSL)
 - **Scheduled background checks** (WorkManager) + notifications
@@ -79,8 +79,7 @@ Recommended file for current version:
 ---
 
 ## License / Лицензия
-This repository does **not** publish source code. Releases contain compiled APKs.  
-See [`LICENSE.md`](./LICENSE.md).
+See [`LICENSE.md`](../LICENSE.md).
 
 ---
 
