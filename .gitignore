@@ -10,7 +10,7 @@
 .cxx/
 *.apk
 *.apk.idsig
-/tools/gradle-8.7/
+/tools/
 *.ap_
 *.dex
 *.class
