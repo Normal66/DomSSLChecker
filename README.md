@@ -28,11 +28,10 @@
 ./gradlew :app:testDebugUnitTest
 ```
 
-Release APK: push тега `X.YY` → GitHub Actions (секреты: [doc/github-release-secrets.md](doc/github-release-secrets.md)).
+Release APK: push тега `X.YY` → GitHub Actions (секреты подписи — в Settings → Secrets репозитория).
 
-### Документация
-- [doc/tz.md](doc/tz.md) — ТЗ
-- [PUBLISH/RELEASE_NOTES_1.02.md](PUBLISH/RELEASE_NOTES_1.02.md) — что нового
+### Что нового
+- [PUBLISH/RELEASE_NOTES_1.02.md](PUBLISH/RELEASE_NOTES_1.02.md)
 
 ---
 

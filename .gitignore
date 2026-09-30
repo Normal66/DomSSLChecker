@@ -15,6 +15,9 @@
 *.dex
 *.class
 
+# Local documentation (never publish)
+/doc/
+
 # Release signing (local only)
 PUBLISH/domsslchecker-release.jks
 PUBLISH/release-signing-credentials.txt
