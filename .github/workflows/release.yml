@@ -19,7 +19,10 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK components
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
       - name: Decode release keystore
         env:
@@ -48,5 +51,6 @@ jobs:
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          body_path: PUBLISH/RELEASE_NOTES_${{ github.ref_name }}.md
           files: DomSSLChecker-*.apk
-          generate_release_notes: true
+          generate_release_notes: false
