@@ -29,7 +29,9 @@ jobs:
           sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
       - name: Gradle test
-        run: ./gradlew :app:testDebugUnitTest --no-daemon
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:testDebugUnitTest --no-daemon
 
       - name: Assemble debug
         run: ./gradlew :app:assembleDebug --no-daemon
